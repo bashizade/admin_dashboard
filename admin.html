@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {},
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/build@0.17.0/event-calendar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@0.17.0/event-calendar.min.js"></script>
+</head>
+
+<body class="">
+    <div class="flex" x-data="{SidebarIsOpen: false,}">
+
+        <!-- sidebar -->
+        <div id="Sidebar" x-bind:class="SidebarIsOpen ? ' md:w-60' : ' md:w-24'"
+            class="hidden md:block fixed top-0 left-0 z-50 h-screen transition-all duration-500 animate__animated animate__fadeInLeft">
+            <div class="bg-violet-500 shadow-lg rounded-r-3xl h-screen reletive grid grid-rows-3">
+                <!-- sidebar open taggle -->
+                <div class="absolute top-10 -right-3 bg-violet-500 text-white rounded-full"
+                    @click="SidebarIsOpen ? SidebarIsOpen = false : SidebarIsOpen = true">
+                    <svg x-show="!SidebarIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <svg x-show="SidebarIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <!-- sidebar menu -->
+                <div class="pt-5">
+                    <div class="flex justify-center items-center">
+                        <img src="https://avatars.githubusercontent.com/u/49550675?v=4" alt=""
+                            x-bind:class="SidebarIsOpen ? 'w-24 h-24' : ' w-14 h-14'"
+                            class="ring-4 rounded-full ring-offset-2">
+                    </div>
+                    <div>
+                        <div x-bind:class="SidebarIsOpen ? '' : 'hidden'" class="text-white text-center pt-3">
+                            <h1>Amirhosein Bashizade</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full px-2">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div x-bind:class="SidebarIsOpen ? '' : 'justify-center'"
+                                        class="flex w-full items-center space-x-2 p-3 rounded-lg transition-all hover:bg-violet-300 hover:text-violet-500 text-white">
+                                        <div class="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                            </svg>
+                                        </div>
+                                        <div x-bind:class="SidebarIsOpen ? '' : 'hidden'" class="">
+                                            <h1>Home</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div x-bind:class="SidebarIsOpen ? '' : 'justify-center'"
+                                        class="flex w-full items-center space-x-2 p-3 rounded-lg transition-all hover:bg-violet-300 hover:text-violet-500 text-white">
+                                        <div class="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" />
+                                            </svg>
+
+                                        </div>
+                                        <div x-bind:class="SidebarIsOpen ? '' : 'hidden'" class="">
+                                            <h1>Store</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div x-bind:class="SidebarIsOpen ? '' : 'justify-center'"
+                                        class="flex w-full items-center space-x-2 p-3 rounded-lg transition-all hover:bg-violet-300 hover:text-violet-500 text-white">
+                                        <div class="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+
+                                        </div>
+                                        <div x-bind:class="SidebarIsOpen ? '' : 'hidden'" class="">
+                                            <h1>Setting</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div x-bind:class="SidebarIsOpen ? '' : 'justify-center'"
+                                        class="flex w-full items-center space-x-2 p-3 rounded-lg transition-all hover:bg-red-300 hover:text-red-500 text-white">
+                                        <div class="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                                            </svg>
+
+                                        </div>
+                                        <div x-bind:class="SidebarIsOpen ? '' : 'hidden'" class="">
+                                            <h1>Logout</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div x-bind:class="SidebarIsOpen ? ' md:pl-64' : ' md:pl-28'" class="w-full p-2">
+            <div class="bg-violet-500 rounded-xl h-12 p-1 mb-3 shadow-lg flex justify-between items-center md:hidden transition-all duration-500">
+                <div>
+                    <div class="flex justify-center items-center">
+                        <img src="https://avatars.githubusercontent.com/u/49550675?v=4" alt=""
+                            class="rounded-full w-10 h-10">
+                    </div>
+                </div>
+                <div>
+                    <div class="md:hidden text-white" id="OpenSidebarMobile">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                          </svg>
+                          
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-2 md:space-y-0 md:grid grid-cols-4 gap-2">
+                <div class="border-2 border-green-800 text-green-800 p-2 rounded-2xl h-28 shadow-lg grid grid-rows-2">
+                    <div>
+                        <h1>User</h1>
+                    </div>
+                    <div>
+                        <h1 class="text-right">100</h1>
+                    </div>
+                </div>
+                <div class="border-2 border-red-800 text-red-800 p-2 rounded-2xl h-28 shadow-lg grid grid-rows-2">
+                    <div>
+                        <h1>Support</h1>
+                    </div>
+                    <div>
+                        <h1 class="text-right">+2</h1>
+                    </div>
+                </div>
+                <div class="border-2 border-violet-800 text-violet-800 p-2 rounded-2xl h-28 shadow-lg grid grid-rows-2">
+                    <div>
+                        <h1>Products</h1>
+                    </div>
+                    <div>
+                        <h1 class="text-right">500</h1>
+                    </div>
+                </div>
+                <div class="border-2 border-yellow-800 text-yellow-800 p-2 rounded-2xl h-28 shadow-lg grid grid-rows-2">
+                    <div>
+                        <h1>Events</h1>
+                    </div>
+                    <div>
+                        <h1 class="text-right">+100</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="md:grid grid-cols-2 gap-3 mt-5">
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const Sidebar = document.getElementById("Sidebar");
+        const OpenSidebarMobile = document.getElementById("OpenSidebarMobile");
+        OpenSidebarMobile.addEventListener('click', () => {
+            Sidebar.classList.remove('hidden');
+        })
+
+
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        let ec = new EventCalendar(document.getElementById('calendar'), {
+            view: 'timeGridWeek',
+            height: '40dvh',
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek resourceTimeGridWeek'
+            },
+            buttonText: function (texts) {
+                texts.resourceTimeGridWeek = 'resources';
+                return texts;
+            },
+            resources: [
+                { id: 1, title: 'Resource A' },
+                { id: 2, title: 'Resource B' }
+            ],
+            scrollTime: '09:00:00',
+            events: createEvents(),
+            views: {
+                timeGridWeek: { pointer: true },
+                resourceTimeGridWeek: { pointer: true }
+            },
+            dayMaxEvents: true,
+            nowIndicator: true,
+            selectable: true
+        });
+
+        function createEvents() {
+            let days = [];
+            for (let i = 0; i < 7; ++i) {
+                let day = new Date();
+                let diff = i - day.getDay();
+                day.setDate(day.getDate() + diff);
+                days[i] = day.getFullYear() + "-" + _pad(day.getMonth() + 1) + "-" + _pad(day.getDate());
+            }
+
+            return [
+                { start: days[0] + " 00:00", end: days[0] + " 09:00", resourceId: 1, display: "background" },
+                { start: days[1] + " 12:00", end: days[1] + " 14:00", resourceId: 2, display: "background" },
+                { start: days[2] + " 17:00", end: days[2] + " 24:00", resourceId: 1, display: "background" },
+                { start: days[0] + " 10:00", end: days[0] + " 14:00", resourceId: 1, title: "The calendar can display background and regular events", color: "#FE6B64" },
+                { start: days[1] + " 16:00", end: days[2] + " 08:00", resourceId: 2, title: "An event may span to another day", color: "#B29DD9" },
+                { start: days[2] + " 09:00", end: days[2] + " 13:00", resourceId: 2, title: "Events can be assigned to resources and the calendar has the resources view built-in", color: "#779ECB" },
+                { start: days[3] + " 14:00", end: days[3] + " 20:00", resourceId: 1, title: "", color: "#FE6B64" },
+                { start: days[3] + " 15:00", end: days[3] + " 18:00", resourceId: 1, title: "Overlapping events are positioned properly", color: "#779ECB" },
+                { start: days[5] + " 10:00", end: days[5] + " 16:00", resourceId: 2, titleHTML: "You have complete control over the <i><b>display</b></i> of events…", color: "#779ECB" },
+                { start: days[5] + " 14:00", end: days[5] + " 19:00", resourceId: 2, title: "…and you can drag and drop the events!", color: "#FE6B64" },
+                { start: days[5] + " 18:00", end: days[5] + " 21:00", resourceId: 2, title: "", color: "#B29DD9" },
+                { start: days[1], end: days[3], resourceId: 1, title: "All-day events can be displayed at the top", color: "#B29DD9", allDay: true }
+            ];
+        }
+        function _pad(num) {
+            let norm = Math.floor(Math.abs(num));
+            return (norm < 10 ? '0' : '') + norm;
+        }
+    </script>
+</body>
+
+</html>
